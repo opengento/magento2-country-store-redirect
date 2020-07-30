@@ -1,0 +1,64 @@
+{
+    "name": "opengento/module-country-store-redirect",
+    "description": "This module will redirect the customers regarding their country of origin, on their first visit session.",
+    "keywords": [
+        "php",
+        "magento",
+        "magento2",
+        "redirect",
+        "geoip",
+        "geoip-location",
+        "location",
+        "country"
+    ],
+    "require": {
+        "php": "^7.1",
+        "psr/log": "*",
+        "magento/framework": "*",
+        "magento/module-config": "*",
+        "magento/module-store": "*",
+        "opengento/module-country-store": "^1.0.0"
+    },
+    "require-dev": {
+        "magento/marketplace-eqp": "^1.0.0"
+    },
+    "suggest": {
+        "opengento/module-country-store-redirect-magepal": "This module add the country store resolver from MagePal GeoIp module.",
+        "opengento/module-country-store-redirect-mageplaza": "This module add the country store resolver from Mageplaza GeoIP module.",
+        "opengento/module-country-store-redirect-magegefan": "This module add the country store resolver from Magefan GeoIp module.",
+        "opengento/module-country-store-redirect-mooore": "This module add the country store resolver from Mooore Digital GeoIp module.",
+        "opengento/module-country-store-switcher": "This module will allows the customers to switch of store by country instead of name/language.",
+        "opengento/module-country-store-phone": "This module add the phone number field to the country data object."
+    },
+    "type": "magento2-module",
+    "license": [
+        "MIT"
+    ],
+    "homepage": "https://github.com/opengento/magento2-country-store-redirect",
+    "authors": [
+        {
+            "name": "Opengento Team",
+            "email": "opengento@gmail.com",
+            "homepage": "https://opengento.fr/",
+            "role": "lead"
+        },
+        {
+            "name": "Thomas Klein",
+            "email": "thomaskein876@gmail.com",
+            "homepage": "https://www.linkedin.com/in/thomas-klein/",
+            "role": "maintainer"
+        }
+    ],
+    "support": {
+        "source": "https://github.com/opengento/magento2-country-store-redirect",
+        "issues": "https://github.com/opengento/magento2-country-store-redirect/issues"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Opengento\\CountryStoreRedirect\\": ""
+        }
+    }
+}

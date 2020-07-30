@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © OpenGento, All rights reserved.
+ * See LICENSE bundled with this library for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <country>
+            <resolver>
+                <code>cloudFare</code>
+            </resolver>
+            <redirect>
+                <enabled>1</enabled>
+                <ignore_actions>stores/store/redirect,stores/store/switch</ignore_actions>
+                <ignore_user_agents>googlebot,bingbot,slurp,duckduckbot,baiduspider,yandexbot,facebot,ia_archiver,yahoo,msnbot</ignore_user_agents>
+            </redirect>
+        </country>
+    </default>
+</config>

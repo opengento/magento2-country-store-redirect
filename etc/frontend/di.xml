@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © OpenGento, All rights reserved.
+ * See LICENSE bundled with this library for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Opengento\CountryStoreRedirect\Model\IsInitialRedirectAllowed" type="Opengento\CountryStoreRedirect\Model\IsAllowedComposite">
+        <arguments>
+            <argument name="isAllowedList" xsi:type="array">
+                <item name="isEnabled" xsi:type="object">Opengento\CountryStoreRedirect\Model\IsAllowed\IsEnabled</item>
+                <item name="isInitial" xsi:type="object">Opengento\CountryStoreRedirect\Model\IsAllowed\IsInitial</item>
+                <item name="isHttp" xsi:type="object">Opengento\CountryStoreRedirect\Model\IsAllowed\IsHttp</item>
+                <item name="isDirect" xsi:type="object">Opengento\CountryStoreRedirect\Model\IsAllowed\IsDirect</item>
+                <item name="userAgent" xsi:type="object">Opengento\CountryStoreRedirect\Model\IsAllowed\IsAllowedUserAgent</item>
+                <item name="controllerAction" xsi:type="object">Opengento\CountryStoreRedirect\Model\IsAllowed\IsAllowedAction</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Opengento\CountryStoreRedirect\Plugin\Action">
+        <arguments>
+            <argument name="isAllowed" xsi:type="object">Opengento\CountryStoreRedirect\Model\IsInitialRedirectAllowed</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\App\FrontControllerInterface">
+        <plugin name="Opengento_CountryStoreRedirect::dispatch" type="Opengento\CountryStoreRedirect\Plugin\Action" sortOrder="-1"/>
+    </type>
+</config>
