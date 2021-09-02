@@ -14,7 +14,7 @@ use Opengento\CountryStoreRedirect\Model\IsAllowedInterface;
 use function array_filter;
 use function array_map;
 use function explode;
-use function in_array;
+use function strpos;
 use function strtolower;
 use function trim;
 
@@ -37,12 +37,17 @@ final class IsAllowedUserAgent implements IsAllowedInterface
 
     public function isAllowed(RequestInterface $request): bool
     {
-        return $request instanceof Http &&
-            !in_array(
-                strtolower((string) $request->getHeader('USER_AGENT')),
-                $this->resolveIgnoreUserAgentList(),
-                true
-            );
+        $userAgent = $request instanceof Http ? strtolower((string) $request->getHeader('USER_AGENT')) : '';
+
+        if ($userAgent) {
+            foreach ($this->resolveIgnoreUserAgentList() as $ignoreUserAgent) {
+                if (strpos($userAgent, $ignoreUserAgent) !== false) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 
     private function resolveIgnoreUserAgentList(): array
