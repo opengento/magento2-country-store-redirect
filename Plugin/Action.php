@@ -54,6 +54,9 @@ final class Action
         $this->logger = $logger;
     }
 
+    /**
+     * @throws NoSuchEntityException
+     */
     public function aroundDispatch(FrontControllerInterface $subject, callable $proceed, RequestInterface $request)
     {
         if ($this->isAllowed->isAllowed($request)) {
