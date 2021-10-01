@@ -29,7 +29,7 @@ class IsAllowedUserAgentTest extends TestCase
     protected function setUp(): void
     {
         $this->scopeConfig = $this->getMockForAbstractClass(ScopeConfigInterface::class);
-        $this->scopeConfig->expects($this->once())
+        $this->scopeConfig
             ->method('getValue')
             ->with('country/redirect/ignore_user_agents')
             ->willReturn(' userAgentA, userAgentB , userAgentC,');
@@ -68,10 +68,10 @@ class IsAllowedUserAgentTest extends TestCase
         ];
     }
 
-    private function createRequestMock($action): MockObject
+    private function createRequestMock($userAgent): MockObject
     {
         $request = $this->createMock(Http::class);
-        $request->expects($this->once())->method('getHeader')->with('USER_AGENT')->willReturn($action);
+        $request->expects($this->once())->method('getHeader')->with('USER_AGENT')->willReturn($userAgent);
 
         return $request;
     }

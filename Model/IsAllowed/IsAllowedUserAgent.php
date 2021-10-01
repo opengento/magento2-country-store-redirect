@@ -52,7 +52,7 @@ final class IsAllowedUserAgent implements IsAllowedInterface
 
     private function resolveIgnoreUserAgentList(): array
     {
-        return $this->userAgents ?? $this->userAgents = array_filter(array_map(
+        return $this->userAgents ??= array_filter(array_map(
             static function (string $userAgent): string {
                 return strtolower(trim($userAgent));
             },
