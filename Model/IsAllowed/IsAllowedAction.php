@@ -50,10 +50,7 @@ final class IsAllowedAction implements IsAllowedInterface
             },
             explode(
                 ',',
-                (string) $this->scopeConfig->getValue(
-                    self::CONFIG_PATH_IGNORE_ACTION_LIST,
-                    ScopeInterface::SCOPE_STORE
-                )
+                (string) $this->scopeConfig->getValue(self::CONFIG_PATH_IGNORE_ACTION_LIST, ScopeInterface::SCOPE_STORE)
             )
         ));
     }
